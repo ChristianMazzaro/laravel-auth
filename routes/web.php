@@ -20,8 +20,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth', 'verified'])->group(function(){
-    Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
+Route::middleware(['auth', 'verified'])
+    ->name('admin.')
+    ->prefix('admin')
+    ->group(function(){
+        Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
 });
 
 // Route::get('/dashboard', function () {
